@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '@google/model-viewer';
 import hero3DModel from '../../assets/zcoer-ecell.glb?url';
@@ -26,16 +26,63 @@ declare global {
 }
 
 interface StatItem {
-  value: string;
+  target: number;
+  suffix: string;
   label: string;
 }
 
 const statsData: StatItem[] = [
-  { value: '1000+', label: 'Students' },
-  { value: '20+', label: 'Events & Workshops' },
-  { value: '50+', label: 'Ideas & Projects' },
-  { value: '10+', label: 'Mentors & Speakers' },
+  { target: 550, suffix: '+', label: 'Students' },
+  { target: 20, suffix: '+', label: 'Events & Workshops' },
+  { target: 50, suffix: '+', label: 'Ideas & Projects' },
+  { target: 10, suffix: '+', label: 'Mentors & Speakers' },
 ];
+
+const StatCard: React.FC<{ target: number; suffix: string; label: string; isVisible: boolean }> = ({
+  target,
+  suffix,
+  label,
+  isVisible,
+}) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    let startTime: number | null = null;
+    let animationFrameId: number;
+    const duration = 2000; // ~2.0s duration (smooth & professional)
+
+    const animateCount = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Smooth ease-out cubic curve (fast start, deceleration to final number)
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.round(easeOut * target));
+
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(animateCount);
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(animateCount);
+
+    return () => {
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
+  }, [isVisible, target]);
+
+  return (
+    <div className="stat-card">
+      <span className="stat-value">
+        {count}{suffix}
+      </span>
+      <span className="stat-label">{label}</span>
+    </div>
+  );
+};
 
 interface WhatWeDoItem {
   number: string;
@@ -313,6 +360,33 @@ const partnersData: PartnerItem[] = [
 
 export const HomePage: React.FC = () => {
   const modelViewerRef = useRef<any>(null);
+  const statsSectionRef = useRef<HTMLElement | null>(null);
+  const [statsVisible, setStatsVisible] = useState(false);
+
+  useEffect(() => {
+    const target = statsSectionRef.current;
+    if (!target) return;
+
+    if (typeof IntersectionObserver === 'undefined') {
+      setStatsVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          setStatsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(target);
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     let animationFrameId: number;
@@ -416,14 +490,17 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* Impact Stats Section */}
-      <section className="home-stats-section" aria-label="E-Cell Impact Statistics">
+      <section ref={statsSectionRef} className="home-stats-section" aria-label="E-Cell Impact Statistics">
         <div className="home-stats-container">
           <div className="stats-grid">
             {statsData.map((stat, idx) => (
-              <div key={idx} className="stat-card">
-                <span className="stat-value">{stat.value}</span>
-                <span className="stat-label">{stat.label}</span>
-              </div>
+              <StatCard
+                key={idx}
+                target={stat.target}
+                suffix={stat.suffix}
+                label={stat.label}
+                isVisible={statsVisible}
+              />
             ))}
           </div>
         </div>
