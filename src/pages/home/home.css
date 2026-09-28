@@ -267,6 +267,193 @@
   margin-top: 0.65rem;
 }
 
+/* Introducing NEC Team 2026 Section */
+.nec-team-section {
+  width: 100%;
+  padding: 1rem 2rem 4.5rem;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+}
+
+.nec-team-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.25rem;
+}
+
+.nec-team-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 780px;
+}
+
+.nec-team-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--accent-gold, #cba358);
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-full, 4px);
+  background: rgba(203, 163, 88, 0.1);
+  border: 1px solid rgba(203, 163, 88, 0.28);
+  box-shadow: 0 0 16px rgba(203, 163, 88, 0.12);
+}
+
+.nec-team-title {
+  font-size: clamp(2rem, 3.8vw, 2.85rem);
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  -webkit-text-stroke: 1px currentColor;
+}
+
+.nec-team-subheading {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+  line-height: 1.45;
+}
+
+.nec-team-media-wrapper {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.nec-team-image-card {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-lg, 4px);
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.75), 0 0 40px rgba(185, 28, 28, 0.12);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nec-team-image-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(203, 163, 88, 0.5);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 50px rgba(203, 163, 88, 0.18);
+}
+
+.nec-team-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.nec-team-image-card:hover .nec-team-image {
+  transform: scale(1.01);
+}
+
+.nec-team-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.25rem 2rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.5) 65%, transparent 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+
+.nec-team-motto {
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.nec-team-tag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent-gold, #cba358);
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.nec-team-action-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.25rem;
+}
+
+.nec-team-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 2.2rem;
+  font-size: 0.875rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #000000;
+  background: var(--accent-gold, #cba358);
+  border: 1px solid var(--accent-gold, #cba358);
+  border-radius: var(--radius-sm, 4px);
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 18px rgba(203, 163, 88, 0.35);
+}
+
+.nec-team-cta-btn:hover {
+  background: #deb666;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 26px rgba(203, 163, 88, 0.5);
+}
+
+.nec-team-cta-btn:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .nec-team-section {
+    padding: 1rem 1.25rem 3.5rem;
+  }
+
+  .nec-team-container {
+    gap: 1.5rem;
+  }
+
+  .nec-team-image-overlay {
+    padding: 1rem 1.25rem;
+    flex-direction: column;
+    gap: 0.35rem;
+    text-align: center;
+  }
+
+  .nec-team-cta-btn {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+}
+
 /* What We Do Section */
 .what-we-do-section {
   width: 100%;

@@ -15,6 +15,7 @@ import blogPitchImg from '../../assets/blogs/pitch.jpg';
 import blogProductImg from '../../assets/blogs/product.jpg';
 import blogMentorshipImg from '../../assets/blogs/mentorship.jpg';
 import { AccordionGallery, type AccordionGalleryItem } from '../../components/accordion-gallery/AccordionGallery';
+import necTeamImg from '../../assets/nec-team-2026.jpg';
 import './home.css';
 
 declare global {
@@ -502,6 +503,43 @@ export const HomePage: React.FC = () => {
                 isVisible={statsVisible}
               />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Introducing NEC Team 2026 Section */}
+      <section className="nec-team-section" aria-label="Introducing NEC Team 2026">
+        <div className="nec-team-container">
+          <div className="nec-team-header">
+            <span className="nec-team-badge">National Entrepreneurship Challenge</span>
+            <h2 className="nec-team-title">INTRODUCING NEC TEAM 2026</h2>
+            <p className="nec-team-subheading">
+              Meet the student leaders driving entrepreneurship, startup incubation, and innovative venture building at ZCOER.
+            </p>
+          </div>
+
+          <div className="nec-team-media-wrapper">
+            <div className="nec-team-image-card">
+              <img
+                src={necTeamImg}
+                alt="ZCOER E-Cell NEC Team 2026"
+                className="nec-team-image"
+                loading="lazy"
+              />
+              <div className="nec-team-image-overlay">
+                <span className="nec-team-motto">“We Rise By Lifting Others”</span>
+                <span className="nec-team-tag">E-Cell ZCOER • 2026</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="nec-team-action-wrap">
+            <Link to="/team" className="nec-team-cta-btn">
+              <span>Explore Full Team</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
           </div>
         </div>
       </section>
