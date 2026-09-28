@@ -15,7 +15,7 @@ import blogPitchImg from '../../assets/blogs/pitch.jpg';
 import blogProductImg from '../../assets/blogs/product.jpg';
 import blogMentorshipImg from '../../assets/blogs/mentorship.jpg';
 import { AccordionGallery, type AccordionGalleryItem } from '../../components/accordion-gallery/AccordionGallery';
-import necTeamImg from '../../assets/nec-team-2026.jpg';
+
 import './home.css';
 
 declare global {
@@ -521,7 +521,7 @@ export const HomePage: React.FC = () => {
           <div className="nec-team-media-wrapper">
             <div className="nec-team-image-card">
               <img
-                src={necTeamImg}
+                src="/assets/team/NEC Team Photo.jpg"
                 alt="ZCOER E-Cell NEC Team 2026"
                 className="nec-team-image"
                 loading="lazy"
