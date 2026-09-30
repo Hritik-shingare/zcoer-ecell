@@ -246,34 +246,7 @@ const communityPillarsData: CommunityPillar[] = [
   },
 ];
 
-interface VentureStep {
-  step: string;
-  title: string;
-  description: string;
-}
 
-const fromIdeaToVentureData: VentureStep[] = [
-  {
-    step: '01',
-    title: 'IDEATE',
-    description: 'Explore and shape your idea.',
-  },
-  {
-    step: '02',
-    title: 'VALIDATE',
-    description: 'Test the problem, market, and potential.',
-  },
-  {
-    step: '03',
-    title: 'BUILD',
-    description: 'Develop your product, team, and business.',
-  },
-  {
-    step: '04',
-    title: 'LAUNCH',
-    description: 'Pitch, connect, and take it forward.',
-  },
-];
 
 interface EcosystemCategory {
   id: string;
@@ -345,19 +318,7 @@ const blogArticlesData: BlogArticleItem[] = [
   },
 ];
 
-interface PartnerItem {
-  name: string;
-  type: string;
-}
 
-const partnersData: PartnerItem[] = [
-  { name: 'AWS Activate', type: 'Cloud Infrastructure Partner' },
-  { name: 'GitHub for Startups', type: 'Developer Ecosystem Partner' },
-  { name: 'TiE Pune', type: 'Entrepreneurial Network' },
-  { name: 'Campus Fund', type: 'Student Venture Capital' },
-  { name: 'Startup India', type: 'National Innovation Initiative' },
-  { name: 'Pune Angel Network', type: 'Angel Investor Consortium' },
-];
 
 export const HomePage: React.FC = () => {
   const modelViewerRef = useRef<any>(null);
@@ -747,44 +708,7 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 9: FROM IDEA TO VENTURE */}
-      <section className="idea-to-venture-section" aria-label="From Idea to Venture">
-        <div className="idea-to-venture-container">
-          <div className="idea-to-venture-header">
-            <h2 className="idea-to-venture-title">FROM IDEA TO VENTURE</h2>
-            <p className="idea-to-venture-subheading">
-              Have an idea? Start here.
-            </p>
-          </div>
 
-          <div className="timeline-horizontal-wrapper">
-            <div className="timeline-connecting-line" aria-hidden="true" />
-            <div className="timeline-steps-grid">
-              {fromIdeaToVentureData.map((step) => (
-                <div key={step.step} className="timeline-step-card">
-                  <div className="timeline-step-indicator">
-                    <span className="timeline-step-num">{step.step}</span>
-                    <span className="timeline-node" aria-hidden="true" />
-                  </div>
-                  <h3 className="timeline-step-title">{step.title}</h3>
-                  <p className="timeline-step-desc">{step.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="venture-cta-wrap">
-            <Link
-              to="/events"
-              className="btn-gold-outline"
-              aria-label="Start Your Venture Journey with E-Cell"
-            >
-              <span>START YOUR JOURNEY</span>
-              <span className="cta-arrow" aria-hidden="true">&rarr;</span>
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* SECTION 10: OUR ECOSYSTEM */}
       <section className="our-ecosystem-section" aria-label="Meet The Ecosystem">
@@ -897,37 +821,7 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 12: PARTNERS & COLLABORATORS */}
-      <section className="partners-section" aria-label="Partners and Collaborators">
-        <div className="partners-container">
-          <div className="partners-header">
-            <h2 className="partners-title">POWERED BY COLLABORATION</h2>
-            <p className="partners-subheading">
-              Building opportunities through meaningful connections across the startup ecosystem.
-            </p>
-          </div>
 
-          <div className="partners-grid">
-            {partnersData.map((partner, idx) => (
-              <div key={idx} className="partner-item-card">
-                <span className="partner-name">{partner.name}</span>
-                <span className="partner-type">{partner.type}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="partners-cta-wrap">
-            <Link
-              to="/contact"
-              className="btn-gold-outline"
-              aria-label="Partner with ZCOER E-Cell"
-            >
-              <span>PARTNER WITH US</span>
-              <span className="cta-arrow" aria-hidden="true">&rarr;</span>
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* SECTION 13: FINAL CTA */}
       <section className="final-cta-section" aria-label="Ready to Build Something">
