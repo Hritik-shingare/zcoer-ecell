@@ -25,3 +25,26 @@
   opacity: 0.6;
   cursor: wait;
 }
+
+/* ── Event Slideshow ── */
+.event-slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.event-slideshow__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  will-change: opacity;
+}
+
+.event-slideshow__img--active {
+  opacity: 1;
+}

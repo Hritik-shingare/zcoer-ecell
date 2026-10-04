@@ -11,9 +11,46 @@ import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import './AccordionGallery.css';
 
+/** Internal slideshow for accordion panels with multiple images */
+const AccordionSlideshow: React.FC<{ images: string[]; alt: string }> = ({ images, alt }) => {
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const id = setInterval(() => setActiveIdx((p) => (p + 1) % images.length), 2000);
+    return () => clearInterval(id);
+  }, [images.length]);
+
+  return (
+    <>
+      {images.map((src, i) => (
+        <img
+          key={src}
+          src={src}
+          alt={i === 0 ? alt : ''}
+          draggable={false}
+          loading="eager"
+          decoding="async"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            opacity: i === activeIdx ? 1 : 0,
+            transition: 'opacity 0.8s ease-in-out',
+          }}
+        />
+      ))}
+    </>
+  );
+};
+
+
 export interface AccordionGalleryItem {
   id?: string;
   image: string;
+  images?: string[];
   label?: string;
   title?: string;
   description?: string;
@@ -539,13 +576,17 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
                     mediaRefs.current[i] = el;
                   }}
                 >
-                  <img
-                    src={item.image}
-                    alt={item.alt || displayTitle}
-                    draggable={false}
-                    loading="eager"
-                    decoding="async"
-                  />
+                  {item.images && item.images.length > 1 ? (
+                    <AccordionSlideshow images={item.images} alt={item.alt || displayTitle} />
+                  ) : (
+                    <img
+                      src={item.image}
+                      alt={item.alt || displayTitle}
+                      draggable={false}
+                      loading="eager"
+                      decoding="async"
+                    />
+                  )}
                 </span>
                 <span className="ag-panel__overlay" aria-hidden="true" />
               </span>

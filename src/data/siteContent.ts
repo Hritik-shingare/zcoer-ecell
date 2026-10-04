@@ -21,14 +21,13 @@ export interface EventItem {
   location: string;
   description: string;
   image: string;
+  images?: string[];
 }
 
 export const events: EventItem[] = [
-  { id: 'e-summit-hackathon', title: 'E-Summit and Hackathon', date: '28 March 2026', month: 'MAR', day: '28', format: '24 hour challenge', location: 'ZCOER Campus', description: 'Build a business model and working prototype with collaborators, mentors, and industry reviewers.', image: eventHackathonImg },
-  { id: 'founders-masterclass', title: 'Founders Masterclass', date: '04 April 2026', month: 'APR', day: '04', format: 'Masterclass', location: 'Seminar Hall', description: 'A focused working session on product-market fit, early distribution, and founder decision-making.', image: eventMasterclassImg },
-  { id: 'venture-pitch-arena', title: 'Venture Pitch Arena', date: '22 April 2026', month: 'APR', day: '22', format: 'Pitch competition', location: 'ZCOER Auditorium', description: 'Present your venture to a panel of operators, investors, and incubator partners for direct feedback.', image: eventPitchArenaImg },
-  { id: 'investor-mixer', title: 'Investor Mixer', date: '10 May 2026', month: 'MAY', day: '10', format: 'Networking session', location: 'ZCOER Campus', description: 'Meet founders, angel investors, and ecosystem partners in a structured student-founder networking session.', image: eventInvestorMixerImg },
-  { id: 'bootstrap-to-scale', title: 'Bootstrap to Scale', date: '24 May 2026', month: 'MAY', day: '24', format: 'Hands-on workshop', location: 'Innovation Lab', description: 'Work through validation, unit economics, and a practical 90-day execution plan for your venture.', image: eventBootcampImg },
+  { id: 'pitch-perfect', title: 'Pitch Perfect', date: '25 August 2026', month: 'AUG', day: '25', format: 'Pitch competition', location: 'ZCOER Auditorium', description: 'Present your venture to a panel of operators, investors, and incubator partners for direct feedback.', image: '/assets/events/Pitch perfect/DSC03568.JPG', images: ['/assets/events/Pitch perfect/DSC03568.JPG', '/assets/events/Pitch perfect/DSC03583.JPG', '/assets/events/Pitch perfect/DSC03584.JPG'] },
+  { id: 'induction-program', title: 'Induction Program', date: '09 October 2026', month: 'OCT', day: '09', format: 'Orientation', location: 'ZCOER Campus', description: 'An introductory program for first-year students, introducing them to E-Cell, its activities, opportunities, and upcoming events.', image: '/assets/events/Induction program/DSC03411.JPG', images: ['/assets/events/Induction program/DSC03411.JPG', '/assets/events/Induction program/DSC03564.JPG', '/assets/events/Induction program/DSC03565.JPG'] },
+  { id: 'illuminate-workshop', title: 'Illuminate Workshop', date: '15 October 2026', month: 'OCT', day: '15', format: 'Hands-on workshop', location: 'Innovation Lab', description: 'Work through validation, unit economics, and a practical 90-day execution plan for your venture.', image: '/assets/events/illuminate2025/IMG_2563.jpg', images: ['/assets/events/illuminate2025/IMG_2563.jpg', '/assets/events/illuminate2025/IMG_2567.jpg', '/assets/events/illuminate2025/IMG_2577.jpg'] },
 ];
 
 export interface StartupItem {

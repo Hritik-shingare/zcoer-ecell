@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
 import { ContentLayout } from '../../components/content-layout/ContentLayout';
@@ -9,6 +9,44 @@ import { notify } from '../../lib/notify';
 import './events.css';
 
 const filters = ['All', ...new Set(events.map((event) => event.format))];
+
+/** Automatic image slideshow for event cards with multiple images */
+function EventSlideshow({ images, alt }: { images: string[]; alt: string }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const advance = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  }, [images.length]);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const timer = setInterval(advance, 2000);
+    return () => clearInterval(timer);
+  }, [advance, images.length]);
+
+  return (
+    <div className="event-slideshow">
+      {images.map((src, idx) => (
+        <img
+          key={src}
+          src={src}
+          alt={idx === 0 ? alt : ''}
+          loading="lazy"
+          width="640"
+          height="400"
+          className={`event-slideshow__img ${idx === currentIndex ? 'event-slideshow__img--active' : ''}`}
+        />
+      ))}
+    </div>
+  );
+}
+
+function formatMonth(month: string): string {
+  const map: Record<string, string> = {
+    MAR: '03', APR: '04', MAY: '05', AUG: '08', SEP: '09', OCT: '10', NOV: '11',
+  };
+  return map[month] || '01';
+}
 
 export function EventsPage() {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -61,12 +99,16 @@ export function EventsPage() {
         {visibleEvents.map((event) => (
           <article key={event.id} className="catalog-card event-card">
             <div className="catalog-card__media">
-              <img src={event.image} alt="" loading="lazy" width="640" height="400" />
+              {event.images && event.images.length > 1 ? (
+                <EventSlideshow images={event.images} alt={event.title} />
+              ) : (
+                <img src={event.image} alt="" loading="lazy" width="640" height="400" />
+              )}
             </div>
             <div className="catalog-card__body">
               <div className="event-card__heading-row">
                 <p className="catalog-card__meta">{event.format}</p>
-                <time className="event-card__date" dateTime={`2026-${event.month === 'MAR' ? '03' : event.month === 'APR' ? '04' : '05'}-${event.day}`}>{event.month} {event.day}</time>
+                <time className="event-card__date" dateTime={`2026-${formatMonth(event.month)}-${event.day.padStart(2, '0')}`}>{event.month} {event.day}</time>
               </div>
               <h2>{event.title}</h2>
               <p>{event.description}</p>

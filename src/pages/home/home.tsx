@@ -2,11 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '@google/model-viewer';
 import hero3DModel from '../../assets/zcoer-ecell.glb?url';
-import eventHackathonImg from '../../assets/events/hackathon.jpg';
-import eventMasterclassImg from '../../assets/events/masterclass.jpg';
-import eventPitchArenaImg from '../../assets/events/pitcharena.jpg';
-import eventInvestorMixerImg from '../../assets/events/investormixer.jpg';
-import eventBootcampImg from '../../assets/events/bootcamp.jpg';
 import campuskiteLogo from '../../assets/startups/campuskite.svg';
 import ecochargeLogo from '../../assets/startups/ecocharge.svg';
 import nexalogixLogo from '../../assets/startups/nexalogix.svg';
@@ -116,48 +111,45 @@ const whatWeDoData: WhatWeDoItem[] = [
 
 const upcomingEventsData: AccordionGalleryItem[] = [
   {
-    id: 'e-summit-hackathon',
-    image: eventHackathonImg,
-    title: 'E-SUMMIT & HACKATHON',
-    label: 'E-Summit & Hackathon',
-    description: 'A 24-hour innovation challenge building scalable business models and tech prototypes.',
-    date: 'MARCH 28, 2026',
+    id: 'pitch-perfect',
+    image: '/assets/events/Pitch perfect/DSC03568.JPG',
+    images: [
+      '/assets/events/Pitch perfect/DSC03568.JPG',
+      '/assets/events/Pitch perfect/DSC03583.JPG',
+      '/assets/events/Pitch perfect/DSC03584.JPG',
+    ],
+    title: 'PITCH PERFECT',
+    label: 'Pitch Perfect',
+    description: 'Present your venture to a panel of operators, investors, and incubator partners for direct feedback.',
+    date: 'AUGUST 25, 2026',
     link: '/events',
   },
   {
-    id: 'founders-masterclass',
-    image: eventMasterclassImg,
-    title: 'FOUNDERS MASTERCLASS',
-    label: 'Founders Masterclass',
-    description: 'Scaling strategies and venture insights shared directly by experienced startup founders.',
-    date: 'APRIL 04, 2026',
+    id: 'induction-program',
+    image: '/assets/events/Induction program/DSC03411.JPG',
+    images: [
+      '/assets/events/Induction program/DSC03411.JPG',
+      '/assets/events/Induction program/DSC03564.JPG',
+      '/assets/events/Induction program/DSC03565.JPG',
+    ],
+    title: 'INDUCTION PROGRAM',
+    label: 'Induction Program',
+    description: 'An introductory program for first-year students, introducing them to E-Cell, its activities, opportunities, and upcoming events.',
+    date: 'OCTOBER 09, 2026',
     link: '/events',
   },
   {
-    id: 'venture-pitch-arena',
-    image: eventPitchArenaImg,
-    title: 'VENTURE PITCH ARENA',
-    label: 'Venture Pitch Arena',
-    description: 'Present your pitch deck to a curated panel of active angel investors and incubators.',
-    date: 'APRIL 22, 2026',
-    link: '/events',
-  },
-  {
-    id: 'angel-investor-mixer',
-    image: eventInvestorMixerImg,
-    title: 'ANGEL INVESTOR MIXER',
-    label: 'Investor Mixer',
-    description: 'Exclusive networking session connecting student ventures with leading early-stage angel investors.',
-    date: 'MAY 10, 2026',
-    link: '/events',
-  },
-  {
-    id: 'bootstrap-to-scale',
-    image: eventBootcampImg,
-    title: 'BOOTSTRAP TO SCALE BOOTCAMP',
-    label: 'Scaling Bootcamp',
-    description: 'Intensive hands-on workshop on product-market fit, unit economics, and rapid growth hacking.',
-    date: 'MAY 24, 2026',
+    id: 'illuminate-workshop',
+    image: '/assets/events/illuminate2025/IMG_2563.jpg',
+    images: [
+      '/assets/events/illuminate2025/IMG_2563.jpg',
+      '/assets/events/illuminate2025/IMG_2567.jpg',
+      '/assets/events/illuminate2025/IMG_2577.jpg',
+    ],
+    title: 'ILLUMINATE WORKSHOP',
+    label: 'Illuminate Workshop',
+    description: 'Work through validation, unit economics, and a practical 90-day execution plan for your venture.',
+    date: 'OCTOBER 15, 2026',
     link: '/events',
   },
 ];
