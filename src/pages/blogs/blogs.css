@@ -1,4 +1,95 @@
+.blogs-page-layout {
+  width: min(100%, 76rem);
+  margin: 0 auto;
+}
+
+.blogs-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Compact, elegant blog card */
+.blog-card-link {
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: var(--radius-md, 8px);
+  overflow: hidden;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.28s ease,
+              box-shadow 0.28s ease;
+}
+
+.blog-card-link:hover {
+  transform: translateY(-4px);
+  border-color: rgba(230, 184, 0, 0.45);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.6), 0 0 20px rgba(230, 184, 0, 0.12);
+}
+
+.blog-card-link .catalog-card__media {
+  aspect-ratio: 16 / 10;
+  max-height: 175px;
+  overflow: hidden;
+  background: #000;
+}
+
+.blog-card-link .catalog-card__body {
+  padding: 1.15rem 1.15rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.blog-card-link h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0 0 0.55rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+.blog-card-link:hover h2 {
+  color: var(--gold-hover, #ffcc00);
+}
+
+.blog-card-description {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0 0 1.15rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.blog-card-cta {
+  pointer-events: none;
+  font-size: 0.84rem;
+  padding: 0.45rem 1rem;
+  min-height: auto;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.blog-card-link:hover .blog-card-cta {
+  background: var(--gold-primary, #e6b800);
+  color: #000;
+  border-color: var(--gold-primary, #e6b800);
+}
+
 .article-read-time {
   color: var(--text-muted);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
 }

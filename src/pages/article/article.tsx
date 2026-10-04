@@ -10,6 +10,7 @@ export function ArticlePage() {
 
   return (
     <ContentLayout
+      className="article-page-layout"
       eyebrow={`${article.category} | ${article.readTime}`}
       title={article.title}
       description={article.description}

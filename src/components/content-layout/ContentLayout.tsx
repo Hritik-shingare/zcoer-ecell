@@ -6,11 +6,12 @@ interface ContentLayoutProps extends PropsWithChildren {
   title: string;
   description: string;
   action?: ReactNode;
+  className?: string;
 }
 
-export function ContentLayout({ eyebrow, title, description, action, children }: ContentLayoutProps) {
+export function ContentLayout({ eyebrow, title, description, action, className, children }: ContentLayoutProps) {
   return (
-    <section className="content-page">
+    <section className={`content-page${className ? ` ${className}` : ''}`}>
       <div className="content-page__intro">
         <p className="content-page__eyebrow">{eyebrow}</p>
         <h1>{title}</h1>

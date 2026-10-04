@@ -23,10 +23,12 @@ function BlogCard({ article }: { article: ArticleItem }) {
   }, [hovered, images]);
 
   return (
-    <article
-      className="catalog-card"
+    <Link
+      to={`/blogs/${article.id}`}
+      className="catalog-card blog-card-link"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      aria-label={`Read article: ${article.title}`}
     >
       <div className="catalog-card__media" style={{ position: 'relative' }}>
         {images ? (
@@ -56,15 +58,15 @@ function BlogCard({ article }: { article: ArticleItem }) {
       <div className="catalog-card__body">
         <p className="catalog-card__meta">{article.category}</p>
         <h2>{article.title}</h2>
-        <p>{article.description}</p>
+        <p className="blog-card-description">{article.description}</p>
         <div className="catalog-card__footer">
           <span className="article-read-time">{article.readTime}</span>
-          <Link to={`/blogs/${article.id}`} className="content-button--ghost">
+          <span className="content-button--ghost blog-card-cta">
             Read article
-          </Link>
+          </span>
         </div>
       </div>
-    </article>
+    </Link>
   );
 }
 
@@ -77,6 +79,7 @@ export function BlogsPage() {
 
   return (
     <ContentLayout
+      className="blogs-page-layout"
       eyebrow="Ideas worth sharing"
       title="Stories from the ecosystem"
       description="Field notes, founder lessons, and practical perspectives for students who want to understand how ideas become durable ventures."
@@ -94,7 +97,7 @@ export function BlogsPage() {
           </button>
         ))}
       </div>
-      <div className="catalog-grid">
+      <div className="catalog-grid blogs-catalog-grid">
         {visibleArticles.map((article) => (
           <BlogCard key={article.id} article={article} />
         ))}

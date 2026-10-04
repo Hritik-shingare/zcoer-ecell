@@ -1,17 +1,50 @@
-.article-detail {
+/* Layout & Title on Article Page */
+.article-page-layout {
+  width: min(100%, 74rem);
+  margin: 0 auto;
+}
+
+.article-page-layout .content-page__intro {
+  max-width: 68rem;
+  margin: 0 auto clamp(2rem, 5vw, 3.5rem);
+}
+
+.article-page-layout h1 {
+  max-width: 32ch;
+  font-size: clamp(2rem, 3.8vw, 3.15rem);
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  word-break: break-word;
+}
+
+.article-page-layout .content-page__description {
+  max-width: 58rem;
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  line-height: 1.65;
+  margin-top: 1.25rem;
+}
+
+/* The container in which we are reading: High opacity so background light doesn't bleed through */
+.article-detail.content-panel {
   padding: 0;
   overflow: hidden;
-  max-width: 56rem;
+  max-width: min(100%, 68rem);
   margin: 0 auto;
+  background: rgba(12, 12, 16, 0.96);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.85), 0 0 35px rgba(0, 0, 0, 0.6);
+  border-radius: var(--radius-md, 12px);
 }
 
 .article-hero-media {
   width: 100%;
   aspect-ratio: 16 / 9;
-  max-height: 480px;
+  max-height: 500px;
   overflow: hidden;
-  background: var(--bg-dark);
-  border-bottom: 1px solid var(--glass-border);
+  background: #000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .article-hero-media img,
@@ -22,17 +55,20 @@
   object-fit: cover;
 }
 
+/* Text width & padding inside reading container */
 .article-detail__body {
   width: 100%;
-  padding: clamp(1.5rem, 5vw, 3.5rem);
+  max-width: 100%;
+  padding: clamp(2rem, 5vw, 4.25rem);
   box-sizing: border-box;
 }
 
 .article-detail__body p {
   margin: 0 0 var(--space-6);
-  color: var(--text-secondary);
-  font-size: clamp(1.025rem, 1.4vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(1.06rem, 1.25vw, 1.18rem);
   line-height: 1.85;
+  max-width: 100%;
 }
 
 .article-section {
@@ -44,22 +80,22 @@
 }
 
 .article-section h2 {
-  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
   font-weight: 700;
   color: var(--text-primary);
-  margin: var(--space-6) 0 var(--space-4);
+  margin: var(--space-8) 0 var(--space-4);
   line-height: 1.35;
   letter-spacing: -0.01em;
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.75rem;
 }
 
 .article-section h2::before {
   content: '';
   display: inline-block;
   width: 4px;
-  height: 1.1em;
+  height: 1.15em;
   background: linear-gradient(180deg, var(--gold-primary, #e6b800), var(--gold-hover, #ffcc00));
   border-radius: 2px;
   flex-shrink: 0;
@@ -69,40 +105,40 @@
   margin: var(--space-6) 0 var(--space-8);
   border-radius: var(--radius-md, 12px);
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
 }
 
 .article-figure img {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 540px;
+  max-height: 560px;
   object-fit: contain;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   margin: 0 auto;
 }
 
 .article-figure figcaption {
-  padding: 0.85rem 1.25rem;
-  font-size: 0.875rem;
+  padding: 0.9rem 1.4rem;
+  font-size: 0.88rem;
   color: var(--text-muted, #a1a1aa);
   font-style: italic;
-  line-height: 1.5;
-  background: rgba(0, 0, 0, 0.65);
-  border-top: 1px solid var(--glass-border);
+  line-height: 1.55;
+  background: rgba(16, 16, 20, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   text-align: center;
 }
 
 .article-quote {
   margin: var(--space-6) 0;
-  padding: 1.25rem 1.75rem;
+  padding: 1.35rem 1.85rem;
   border-left: 3px solid var(--gold-primary, #e6b800);
-  background: rgba(230, 184, 0, 0.06);
+  background: rgba(230, 184, 0, 0.08);
   border-radius: 0 10px 10px 0;
   font-style: italic;
   color: var(--text-primary);
-  font-size: 1.1rem;
+  font-size: 1.12rem;
   line-height: 1.65;
 }
