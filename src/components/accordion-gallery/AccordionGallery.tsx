@@ -12,14 +12,21 @@ import { gsap } from 'gsap';
 import './AccordionGallery.css';
 
 /** Internal slideshow for accordion panels with multiple images */
-const AccordionSlideshow: React.FC<{ images: string[]; alt: string }> = ({ images, alt }) => {
+const AccordionSlideshow: React.FC<{ images: string[]; alt: string; active?: boolean }> = ({
+  images,
+  alt,
+  active = false,
+}) => {
   const [activeIdx, setActiveIdx] = useState(0);
 
   useEffect(() => {
-    if (images.length <= 1) return;
+    if (!active || images.length <= 1) {
+      setActiveIdx(0);
+      return;
+    }
     const id = setInterval(() => setActiveIdx((p) => (p + 1) % images.length), 2000);
     return () => clearInterval(id);
-  }, [images.length]);
+  }, [active, images.length]);
 
   return (
     <>
@@ -135,6 +142,16 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
   const [globalActiveIndex, setGlobalActiveIndex] = useState(
     Math.min(Math.max(defaultIndex, 0), Math.max(totalCount - 1, 0))
   );
+
+  // Hover and touch tracking for slideshow control
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches) {
+      setIsTouch(true);
+    }
+  }, []);
 
   // Sliding window start index
   const [startIndex, setStartIndex] = useState(0);
@@ -547,10 +564,12 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
         style={rootStyle}
         role="list"
         aria-label="Upcoming Events Gallery"
+        onMouseLeave={() => setHoveredIndex(null)}
       >
         {visibleItems.map((item, i) => {
           const isActive = i === localActiveIndex;
           const displayTitle = item.title || item.label || '';
+          const isSlideshowActive = isActive && (hoveredIndex === i || isTouch);
 
           return (
             <div
@@ -561,8 +580,15 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
               className={`ag-panel${isActive ? ' ag-panel--active' : ''}`}
               style={{ borderRadius: `${radius}px` }}
               onClick={(e) => handleClick(i, e)}
-              onMouseEnter={() => handleEnter(i)}
-              onFocus={() => setGlobalActiveIndex(startIndex + i)}
+              onMouseEnter={() => {
+                setHoveredIndex(i);
+                handleEnter(i);
+              }}
+              onFocus={() => {
+                setHoveredIndex(i);
+                setGlobalActiveIndex(startIndex + i);
+              }}
+              onBlur={() => setHoveredIndex(null)}
               onKeyDown={(e) => handleKeyDown(i, e)}
               role="listitem"
               tabIndex={0}
@@ -577,7 +603,11 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
                   }}
                 >
                   {item.images && item.images.length > 1 ? (
-                    <AccordionSlideshow images={item.images} alt={item.alt || displayTitle} />
+                    <AccordionSlideshow
+                      images={item.images}
+                      alt={item.alt || displayTitle}
+                      active={isSlideshowActive}
+                    />
                   ) : (
                     <img
                       src={item.image}

@@ -112,11 +112,11 @@ const whatWeDoData: WhatWeDoItem[] = [
 const upcomingEventsData: AccordionGalleryItem[] = [
   {
     id: 'pitch-perfect',
-    image: '/assets/events/Pitch perfect/DSC03568.JPG',
+    image: '/assets/events/Pitch perfect/DSC03584.JPG',
     images: [
+      '/assets/events/Pitch perfect/DSC03584.JPG',
       '/assets/events/Pitch perfect/DSC03568.JPG',
       '/assets/events/Pitch perfect/DSC03583.JPG',
-      '/assets/events/Pitch perfect/DSC03584.JPG',
     ],
     title: 'PITCH PERFECT',
     label: 'Pitch Perfect',
@@ -126,11 +126,11 @@ const upcomingEventsData: AccordionGalleryItem[] = [
   },
   {
     id: 'induction-program',
-    image: '/assets/events/Induction program/DSC03411.JPG',
+    image: '/assets/events/Induction program/DSC03564.JPG',
     images: [
-      '/assets/events/Induction program/DSC03411.JPG',
       '/assets/events/Induction program/DSC03564.JPG',
       '/assets/events/Induction program/DSC03565.JPG',
+      '/assets/events/Induction program/DSC03411.JPG',
     ],
     title: 'INDUCTION PROGRAM',
     label: 'Induction Program',
@@ -143,8 +143,8 @@ const upcomingEventsData: AccordionGalleryItem[] = [
     image: '/assets/events/illuminate2025/IMG_2563.jpg',
     images: [
       '/assets/events/illuminate2025/IMG_2563.jpg',
-      '/assets/events/illuminate2025/IMG_2567.jpg',
       '/assets/events/illuminate2025/IMG_2577.jpg',
+      '/assets/events/illuminate2025/IMG_2567.jpg',
     ],
     title: 'ILLUMINATE WORKSHOP',
     label: 'Illuminate Workshop',
