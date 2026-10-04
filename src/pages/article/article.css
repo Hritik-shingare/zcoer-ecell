@@ -96,7 +96,7 @@
   display: inline-block;
   width: 4px;
   height: 1.15em;
-  background: linear-gradient(180deg, var(--gold-primary, #e6b800), var(--gold-hover, #ffcc00));
+  background: linear-gradient(180deg, var(--accent-gold, #c59f56), var(--accent-gold-light, #f3e5ad));
   border-radius: 2px;
   flex-shrink: 0;
 }
@@ -134,8 +134,8 @@
 .article-quote {
   margin: var(--space-6) 0;
   padding: 1.35rem 1.85rem;
-  border-left: 3px solid var(--gold-primary, #e6b800);
-  background: rgba(230, 184, 0, 0.08);
+  border-left: 3px solid var(--accent-gold, #c59f56);
+  background: rgba(197, 159, 86, 0.08);
   border-radius: 0 10px 10px 0;
   font-style: italic;
   color: var(--text-primary);

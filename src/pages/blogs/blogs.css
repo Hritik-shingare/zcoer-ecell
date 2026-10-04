@@ -28,8 +28,8 @@
 
 .blog-card-link:hover {
   transform: translateY(-4px);
-  border-color: rgba(230, 184, 0, 0.45);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.6), 0 0 20px rgba(230, 184, 0, 0.12);
+  border-color: rgba(197, 159, 86, 0.45);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.6), 0 0 20px rgba(197, 159, 86, 0.15);
 }
 
 .blog-card-link .catalog-card__media {
@@ -60,7 +60,7 @@
 }
 
 .blog-card-link:hover h2 {
-  color: var(--gold-hover, #ffcc00);
+  color: var(--accent-gold, #c59f56);
 }
 
 .blog-card-description {
@@ -84,9 +84,9 @@
 }
 
 .blog-card-link:hover .blog-card-cta {
-  background: var(--gold-primary, #e6b800);
-  color: #000;
-  border-color: var(--gold-primary, #e6b800);
+  background: var(--accent-gold, #c59f56);
+  color: #0b0906;
+  border-color: var(--accent-gold, #c59f56);
 }
 
 .article-read-time {
